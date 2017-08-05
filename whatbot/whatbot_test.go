@@ -10,7 +10,7 @@ import (
 func TestChat(t *testing.T) {
 	verifyInput(t, "what", "LIGHTBULB!")
 	verifyInput(t, "whatbot", "LIGHTBULB!")
-	verifyInput(t, "why", "That's not my name!\n What is my name?")
+	verifyInput(t, "why", "That's not my name!\nWhat is my name?")
 }
 
 func verifyInput(t *testing.T, input string, output string) {

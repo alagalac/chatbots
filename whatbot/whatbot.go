@@ -31,5 +31,5 @@ func recieveInput(input *os.File) (string, bool) {
 		return "Nooooo!!!", true
 	}
 	
-	return "That's not my name!\n What is my name?", false
+	return "That's not my name!\nWhat is my name?", false
 }
