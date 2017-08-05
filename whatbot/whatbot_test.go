@@ -10,7 +10,7 @@ import (
 func TestChat(t *testing.T) {
 	verifyInput(t, "what", "LIGHTBULB!")
 	verifyInput(t, "whatbot", "LIGHTBULB!")
-	verifyInput(t, "why", "Huh?")
+	verifyInput(t, "why", "That's not my name!\n What is my name?")
 }
 
 func verifyInput(t *testing.T, input string, output string) {
@@ -35,7 +35,7 @@ func verifyInput(t *testing.T, input string, output string) {
         t.Fatal(err)
     }
 
-	result := recieveInput(tmpfile)
+	result, _ := recieveInput(tmpfile)
 	if result != output {
 		t.Errorf("Unexpected result. Entered: %q, Expected: %q, Actual: %q", input, output, result)
 	}
