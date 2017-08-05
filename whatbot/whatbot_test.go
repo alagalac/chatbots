@@ -9,6 +9,8 @@ import (
 
 func TestChat(t *testing.T) {
 	verifyInput(t, "what", "LIGHTBULB!")
+	verifyInput(t, "whatbot", "LIGHTBULB!")
+	verifyInput(t, "why", "Huh?")
 }
 
 func verifyInput(t *testing.T, input string, output string) {
