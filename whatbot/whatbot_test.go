@@ -8,6 +8,10 @@ import (
 )
 
 func TestChat(t *testing.T) {
+	verifyInput(t, "what", "LIGHTBULB!")
+}
+
+func verifyInput(t *testing.T, input string, output string) {
 	// Create temporary file for us to use
 	tmpfile, err := ioutil.TempFile("", "")
     if err != nil {
@@ -15,11 +19,11 @@ func TestChat(t *testing.T) {
     }
 
 	// Clean up
-    //defer tmpfile.Close()
-	//defer os.Remove(tmpfile.Name())
+    defer tmpfile.Close()
+	defer os.Remove(tmpfile.Name())
 
 	// Begin testing
-	_, err = io.WriteString(tmpfile, "whatbot\n")
+	_, err = io.WriteString(tmpfile, input)
 	if err != nil {
         t.Fatal(err)
     }
@@ -30,7 +34,7 @@ func TestChat(t *testing.T) {
     }
 
 	result := recieveInput(tmpfile)
-	if result != "LIGHTBULB!" {
-		t.Error("Unexpected result. Returned:", result)
+	if result != output {
+		t.Errorf("Unexpected result. Entered: %q, Expected: %q, Actual: %q", input, output, result)
 	}
 }
